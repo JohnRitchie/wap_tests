@@ -37,9 +37,10 @@ def test_twitch_stream_search(driver):
         time.sleep(2)
 
     # 5. Select a streamer
-    streamer = driver.find_element(By.CSS_SELECTOR, "a[data-a-target='preview-card-title-link']")
-    streamer.click()
-    time.sleep(5)
+    main_content = driver.find_element(By.ID, "page-main-content-wrapper")
+    last_section = main_content.find_element(By.XPATH, "./div/div/section[last()]")
+    video_div = last_section.find_element(By.XPATH, "./div[3]")
+    video_div.click()
 
     # 6. Wait for the streamer's page to load completely and take a screenshot
     time.sleep(10)
