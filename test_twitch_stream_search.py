@@ -1,9 +1,8 @@
 import time
+import random
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 def test_twitch_stream_search(driver):
@@ -36,11 +35,11 @@ def test_twitch_stream_search(driver):
         actions.send_keys(Keys.PAGE_DOWN).perform()
         time.sleep(2)
 
-    # 5. Select a streamer
+    # 5. Select a random streamer
     main_content = driver.find_element(By.ID, "page-main-content-wrapper")
     last_section = main_content.find_element(By.XPATH, "./div/div/section[last()]")
-    video_div = last_section.find_element(By.XPATH, "./div[3]")
-    video_div.click()
+    random_video_div = last_section.find_element(By.XPATH, f"./div[{random.randint(2, 3)}]")
+    random_video_div.click()
 
     # 6. Wait for the streamer's page to load completely and take a screenshot
     time.sleep(10)
