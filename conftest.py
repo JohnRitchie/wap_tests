@@ -11,6 +11,7 @@ def driver():
     mobile_emulation = {"deviceName": "iPhone X"}
     chrome_options = Options()
     chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    chrome_options.add_argument("--lang=en-US")
 
     service = Service(ChromeDriverManager().install())
 
