@@ -1,6 +1,4 @@
 pytest
 selenium
 allure-pytest
-assertpy
-pytest-html
 webdriver_manager
