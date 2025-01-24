@@ -43,6 +43,9 @@ def test_twitch_stream_search(driver):
         time.sleep(2)
 
     # 5. Select a random streamer
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, "//h2[text()='VIDEOS']"))
+    )
     main_content = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "page-main-content-wrapper"))
     )
