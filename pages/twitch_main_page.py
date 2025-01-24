@@ -16,6 +16,7 @@ class TwitchMainPage:
 
     def navigate(self):
         self.driver.get(self.url)
+        self.wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
     def accept_cookies(self):
         try:

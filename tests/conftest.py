@@ -1,4 +1,5 @@
 import pytest
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -24,8 +25,8 @@ def driver():
 
 @pytest.fixture(scope="function")
 def twitch_main_page(driver):
-    #todo: with allure.step("Creating a session"):
-    page_obj = TwitchMainPage(driver)
-    page_obj.navigate()
+    with allure.step("Go to Twitch mobile site"):
+        page_obj = TwitchMainPage(driver)
+        page_obj.navigate()
 
     return page_obj
