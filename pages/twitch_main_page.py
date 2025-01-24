@@ -1,5 +1,6 @@
 import time
 import random
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
@@ -58,3 +59,10 @@ class TwitchMainPage:
             EC.presence_of_element_located((By.TAG_NAME, "video"))
         )
         self.driver.save_screenshot(screenshot_name)
+
+        with open(screenshot_name, "rb") as screenshot_file:
+            allure.attach(
+                screenshot_file.read(),
+                name="Streamer Page Screenshot",
+                attachment_type=allure.attachment_type.PNG
+            )
